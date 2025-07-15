@@ -4,11 +4,9 @@ import DrawerLeftContent from "./DrawerLeftContent";
 
 function Drawer({
   drawerId,
-  title,
   drawerPosition = false,
 }: {
   drawerId: string;
-  title?: string;
   drawerPosition?: boolean;
 }) {
   return (
