@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
 import Drawer from "@/components/Drawer";
 
 const geistSans = Geist({
@@ -31,7 +30,6 @@ export default function RootLayout({
       >
         <Drawer drawerId="my-drawer-4" />
         <Drawer drawerId="my-drawer-2" drawerPosition />
-        <Navbar />
         {children}
       </body>
     </html>
