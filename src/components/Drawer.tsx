@@ -1,6 +1,7 @@
 "use client";
 
 import DrawerLeftContent from "./DrawerLeftContent";
+import DrawerRightContent from "./DrawerRightContent";
 
 function Drawer({
   drawerId,
@@ -27,6 +28,7 @@ function Drawer({
         <ul className="menu bg-base-100 text-base-content min-h-full w-72 p-4">
           {/* Sidebar content here */}
           {!drawerPosition && <DrawerLeftContent />}
+          {drawerPosition && <DrawerRightContent />}
         </ul>
       </div>
     </div>
