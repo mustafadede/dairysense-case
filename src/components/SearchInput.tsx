@@ -19,8 +19,12 @@ function SearchInput() {
           <path d="m21 21-4.3-4.3"></path>
         </g>
       </svg>
-      <input type="search" className="grow" placeholder="İnek Ara" />
-      <kbd className="kbd kbd-sm">/</kbd>
+      <input
+        type="search"
+        className="grow hidden md:flex"
+        placeholder="İnek Ara"
+      />
+      <kbd className="kbd hidden md:flex kbd-sm">/</kbd>
     </label>
   );
 }

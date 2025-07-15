@@ -44,7 +44,7 @@ function Navbar() {
         </button>
         {/** Title end */}
         {/** Breadcrumbs start */}
-        <div className="breadcrumbs text-sm">
+        <div className="breadcrumbs hidden md:flex text-sm">
           <ul>
             <li>
               <a>Kontrol Paneli</a>
