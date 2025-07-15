@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/components/Navbar";
+import Navbar from "../components/Navbar";
 
 const cardDatas = [
   {
@@ -68,7 +68,8 @@ export default function Home() {
           {cardDatas.map((card, index) => (
             <div
               key={index}
-              className={`stats flex flex-wrap flex-1 w-full overflow-hidden flex-col bg-[${card.bgColor}] p-6 rounded-2xl`}
+              className="stats flex flex-wrap flex-1 w-full overflow-hidden flex-col p-6 rounded-2xl"
+              style={{ backgroundColor: card.bgColor }}
             >
               <div className="stat-title !text-start">{card.title}</div>
               <div className="flex gap-4">
