@@ -1,5 +1,32 @@
 import Navbar from "@/components/Navbar";
 
+const cardDatas = [
+  {
+    title: "Son 24 Saat Süt",
+    value: 7.262,
+    increase: 11.0,
+    bgColor: "#EDEEFB",
+  },
+  {
+    title: "Dün Toplam Süt",
+    value: 3.671,
+    decrease: 0.3,
+    bgColor: "#E6F0FD",
+  },
+  {
+    title: "Sağılan İnek Sayısı",
+    value: 156,
+    increase: 15.03,
+    bgColor: "#EDEEFB",
+  },
+  {
+    title: "Ortalama Süt",
+    value: 2.138,
+    increase: 6.08,
+    bgColor: "#E6F0FD",
+  },
+];
+
 export default function Home() {
   return (
     <div className="w-screen h-screen">
@@ -36,36 +63,61 @@ export default function Home() {
             </ul>
           </details>
         </div>
-        <div className="flex flex-wrap gap-10">
-          <div className="stats bg-[#EDEEFB] p-2 rounded-2xl">
-            <div className="stat">
-              <div className="stat-title">Total Page Views</div>
-              <div className="stat-value">89,400</div>
-              <div className="stat-desc">21% more than last month</div>
+        <div className="flex flex-col lg:flex-row w-full flex-wrap gap-10">
+          {cardDatas.map((card, index) => (
+            <div
+              key={index}
+              className={`stats flex flex-wrap flex-1 w-full overflow-hidden flex-col bg-[${card.bgColor}] p-6 rounded-2xl`}
+            >
+              <div className="stat-title !text-start">{card.title}</div>
+              <div className="flex gap-4">
+                <div className="stat-value text-black">
+                  {card.value.toLocaleString()}
+                </div>
+                {card.increase ? (
+                  <div className="flex items-center gap-2 text-black">
+                    <div className="stat-desc text-black">
+                      +{card.increase}%
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-black">
+                    <div className="stat-desc text-black">
+                      -{card.decrease}%
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-
-          <div className="stats shadow bg-[#E6F0FD] p-2 rounded-2xl">
-            <div className="stat">
-              <div className="stat-title">Total Page Views</div>
-              <div className="stat-value">89,400</div>
-              <div className="stat-desc">21% more than last month</div>
-            </div>
-          </div>
-          <div className="stats shadow bg-[#EDEEFB] p-2 rounded-2xl">
-            <div className="stat">
-              <div className="stat-title">Total Page Views</div>
-              <div className="stat-value">89,400</div>
-              <div className="stat-desc">21% more than last month</div>
-            </div>
-          </div>
-          <div className="stats shadow bg-[#E6F0FD] p-2 rounded-2xl">
-            <div className="stat">
-              <div className="stat-title">Total Page Views</div>
-              <div className="stat-value">89,400</div>
-              <div className="stat-desc">21% more than last month</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
