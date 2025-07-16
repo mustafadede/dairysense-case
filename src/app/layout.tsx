@@ -31,6 +31,15 @@ export default function RootLayout({
         <Drawer drawerId="my-drawer-4" />
         <Drawer drawerId="my-drawer-2" drawerPosition />
         {children}
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Merhaba!</h3>
+            <p className="py-4">Çıkmak için ESC veya dışarıya tıklayın</p>
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
       </body>
     </html>
   );

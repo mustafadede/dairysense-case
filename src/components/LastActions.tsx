@@ -4,7 +4,15 @@ import React from "react";
 
 function LastActions({ title, date }: { title: string; date: string }) {
   return (
-    <div className="flex gap-2 items-start">
+    <button
+      className="flex gap-2 items-start cursor-pointer"
+      onClick={() => {
+        const modal = document.getElementById(
+          "my_modal_2"
+        ) as HTMLDialogElement | null;
+        modal?.showModal();
+      }}
+    >
       <div className="rounded-full h-fit w-fit p-1">
         <Image
           src={"https://picsum.photos/200"}
@@ -16,9 +24,9 @@ function LastActions({ title, date }: { title: string; date: string }) {
       </div>
       <div>
         <h2 className="text-md font-semibold">{title}</h2>
-        <h4 className="text-xs text-gray-400">{date}</h4>
+        <h4 className="text-xs text-start text-gray-400">{date}</h4>
       </div>
-    </div>
+    </button>
   );
 }
 

@@ -31,7 +31,16 @@ function DrawerRightContent() {
       <SubHeader title="Hekimler" />
       <div className="mb-10">
         {names.map((name, index) => (
-          <div key={index} className="flex gap-2 items-start my-3">
+          <button
+            key={index}
+            className="flex gap-2 items-start my-3 cursor-pointer"
+            onClick={() => {
+              const modal = document.getElementById(
+                "my_modal_2"
+              ) as HTMLDialogElement | null;
+              modal?.showModal();
+            }}
+          >
             <div className="rounded-full h-fit w-fit p-1">
               <Image
                 src={"https://thispersondoesnotexist.com/"}
@@ -42,7 +51,7 @@ function DrawerRightContent() {
               />
             </div>
             <h2 className="text-lg font-semibold">{name}</h2>
-          </div>
+          </button>
         ))}
       </div>
     </div>
