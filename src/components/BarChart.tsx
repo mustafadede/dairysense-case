@@ -65,8 +65,10 @@ function BarChart() {
                 display: false,
               },
               ticks: {
-                callback: function (value: any) {
-                  return value >= 1000 ? value / 1000 + "k" : value;
+                callback: function (value: number | string) {
+                  return Number(value) >= 1000
+                    ? Number(value) / 1000 + "k"
+                    : value;
                 },
               },
             },
