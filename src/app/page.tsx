@@ -1,4 +1,5 @@
 "use client";
+import SampleChart from "@/components/SampleChart";
 import Navbar from "../components/Navbar";
 
 const cardDatas = [
@@ -64,7 +65,7 @@ export default function Home() {
             </ul>
           </details>
         </div>
-        <div className="flex flex-col lg:flex-row w-full flex-wrap gap-10">
+        <div className="flex flex-col lg:flex-row w-full flex-wrap gap-10 mb-5 md:mb-10">
           {cardDatas.map((card, index) => (
             <div
               key={index}
@@ -120,6 +121,9 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="w-full md:w-1/2 md:p-7 rounded-2xl bg-[#F9F9F9]">
+          <SampleChart />
         </div>
       </div>
     </div>

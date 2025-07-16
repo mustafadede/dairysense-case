@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 
 function Navbar() {
   return (
-    <div className="navbar w-full bg-base-100 shadow-sm">
+    <div className="navbar sticky top-0 z-[9000000] w-full bg-base-100 shadow-sm">
       <div className="navbar-start flex">
         {/** Title start */}
         <label
