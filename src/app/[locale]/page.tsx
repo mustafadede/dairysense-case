@@ -1,7 +1,8 @@
 "use client";
 import SampleChart from "@/components/SampleChart";
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
 import BarChart from "@/components/BarChart";
+import { useTranslations } from "next-intl";
 
 const cardDatas = [
   {
@@ -31,15 +32,16 @@ const cardDatas = [
 ];
 
 export default function Home() {
+  const t = useTranslations("HomePage");
   return (
     <div className="w-screen h-screen mb-5 md:mb-10">
       <Navbar />
       <div className="flex flex-col h-full p-6">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-xl font-bold">Overview</h1>
+          <h1 className="text-xl font-bold">{t("overview")}</h1>
           <details className="dropdown">
             <summary className="btn btn-ghost m-1">
-              Bugün
+              {t("today")}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

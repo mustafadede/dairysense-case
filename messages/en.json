@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "overview": "Overview",
+    "controlpanel": "Control Panel",
+    "default": "Default",
+    "search": "Search Cow",
+    "today": "Today",
+    "reports": "Reports"
+  }
+}

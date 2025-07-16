@@ -1,6 +1,9 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 function SearchInput() {
+  const t = useTranslations("HomePage");
   return (
     <label className="input">
       <svg
@@ -22,7 +25,7 @@ function SearchInput() {
       <input
         type="search"
         className="grow hidden md:flex"
-        placeholder="İnek Ara"
+        placeholder={t("search")}
       />
       <kbd className="kbd hidden md:flex kbd-sm">/</kbd>
     </label>
