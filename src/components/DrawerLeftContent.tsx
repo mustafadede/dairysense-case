@@ -147,7 +147,7 @@ const icons: Record<string, JSX.Element> = {
 
 function DrawerLeftContent() {
   return (
-    <div>
+    <div className="verflow-y-auto">
       <Image
         src={"/dairysenselogo.png"}
         alt="Dairysense Logo"
@@ -155,16 +155,28 @@ function DrawerLeftContent() {
         height={100}
         className="mb-4 w-full h-auto rounded-lg"
       />
-      <div className="flex flex-col gap-2 ">
-        {names.map((name, index) => (
-          <button
-            key={`${name}-${index}`}
-            className="btn bg-white text-start w-full border-0 hover:bg-gray-300 rounded-2xl py-4 justify-start text-black"
-          >
-            <span className="mr-2">{icons[name] ?? <span />}</span>
-            {name}
-          </button>
-        ))}
+      <div className="flex flex-col justify-around h-[79vh] md:h-[80vh]">
+        <div className="flex flex-col gap-2">
+          {names.map((name, index) => (
+            <button
+              key={`${name}-${index}`}
+              className="btn bg-white text-start w-full border-0 hover:bg-gray-300 rounded-2xl py-4 justify-start text-black"
+            >
+              <span className="mr-2">{icons[name] ?? <span />}</span>
+              <p className="text-sm md:text-base">{name}</p>
+            </button>
+          ))}
+        </div>
+        <button className="btn bg-white text-start w-full border-0 rounded-2xl py-4 justify-start text-black">
+          <Image
+            src={"/person.png"}
+            alt="person"
+            width={30}
+            height={30}
+            className="rounded-full"
+          ></Image>
+          Vet. Furkan Acar
+        </button>
       </div>
     </div>
   );

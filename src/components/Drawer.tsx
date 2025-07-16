@@ -13,7 +13,7 @@ function Drawer({
   return (
     <div
       className={
-        `drawer w-auto 2xl:drawer-open absolute top-0` +
+        `drawer w-auto absolute top-0` +
         (drawerPosition ? ` drawer-end right-0` : "left-0")
       }
     >

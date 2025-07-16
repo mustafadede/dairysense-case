@@ -50,7 +50,7 @@ export default function SampleChart() {
       },
       title: {
         display: true,
-        text: "Haftalık Süt Üretimi",
+        text: "Toplam Süt",
       },
     },
     scales: {
