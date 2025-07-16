@@ -1,6 +1,7 @@
 "use client";
 import SampleChart from "@/components/SampleChart";
 import Navbar from "../components/Navbar";
+import BarChart from "@/components/BarChart";
 
 const cardDatas = [
   {
@@ -31,7 +32,7 @@ const cardDatas = [
 
 export default function Home() {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen mb-5 md:mb-10">
       <Navbar />
       <div className="flex flex-col h-full p-6">
         <div className="flex justify-between items-center mb-4">
@@ -122,8 +123,11 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="w-full md:w-1/2 md:p-7 rounded-2xl bg-[#F9F9F9]">
-          <SampleChart />
+        <div className="flex flex-col md:flex-row gap-3 md:gap-7">
+          <div className="w-full md:w-2/3 p-4 md:p-7 rounded-2xl bg-[#F9F9F9]">
+            <SampleChart />
+          </div>
+          <BarChart />
         </div>
       </div>
     </div>

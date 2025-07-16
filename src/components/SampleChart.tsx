@@ -53,6 +53,26 @@ export default function SampleChart() {
         text: "Haftalık Süt Üretimi",
       },
     },
+    scales: {
+      y: {
+        grid: {
+          display: false,
+          drawTicks: false,
+        },
+        border: {
+          display: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+          drawTicks: false,
+        },
+        border: {
+          display: false,
+        },
+      },
+    },
   };
 
   return <Line data={data} options={options} height={200} />;
