@@ -11,8 +11,10 @@ import {
   arrayMove,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CSS } from "@dnd-kit/utilities";
+import { useWeatherLocation } from "@/hooks/useWeatherLocation";
+import { WeatherCard } from "@/components/WeatherCard";
 
 const cardDatas = [
   {
@@ -89,7 +91,68 @@ function SortableBlock({ id, children, showHandles }: SortableBlockProps) {
   );
 }
 
+interface WeatherData {
+  location: {
+    name: string;
+    region: string;
+    country: string;
+    lat: number;
+    lon: number;
+    tz_id: string;
+    localtime_epoch: number;
+    localtime: string;
+  };
+  current: {
+    last_updated_epoch: number;
+    last_updated: string;
+    temp_c: number;
+    temp_f: number;
+    is_day: number;
+    condition: {
+      text: string;
+      icon: string;
+      code: number;
+    };
+    wind_mph: number;
+    wind_kph: number;
+    wind_degree: number;
+    wind_dir: string;
+    pressure_mb: number;
+    pressure_in: number;
+    precip_mm: number;
+    precip_in: number;
+    humidity: number;
+    cloud: number;
+    feelslike_c: number;
+    feelslike_f: number;
+    windchill_c: number;
+    windchill_f: number;
+    heatindex_c: number;
+    heatindex_f: number;
+    dewpoint_c: number;
+    dewpoint_f: number;
+    vis_km: number;
+    vis_miles: number;
+    uv: number;
+    gust_mph: number;
+    gust_kph: number;
+    air_quality: {
+      co: number;
+      no2: number;
+      o3: number;
+      so2: number;
+      pm2_5: number;
+      pm10: number;
+      "us-epa-index": number;
+      "gb-defra-index": number;
+    };
+  };
+}
+
 export default function Home() {
+  const [location, setLocation] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<WeatherData | null>(null);
   const t = useTranslations("HomePage");
   const initialBlocks = ["header", "cards", "charts"];
   const [sortableItems, setSortableItems] = useState(initialBlocks);
@@ -108,10 +171,54 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    if (!location) return;
+
+    setLoading(true);
+
+    const timeoutId = setTimeout(() => {
+      useWeatherLocation(location).then((res) => {
+        setData(res);
+        setLoading(false);
+      });
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [location]);
+
   return (
     <div className="w-screen h-screen mb-5 md:mb-10">
       <Navbar />
       <div className="flex flex-col h-full p-6">
+        <label className="input w-full h-full mb-4">
+          <svg
+            className="h-[1em] opacity-50"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <g
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              strokeWidth="2.5"
+              fill="none"
+              stroke="currentColor"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </g>
+          </svg>
+          <input
+            type="search"
+            className="h-10"
+            placeholder={t("searchlocation")}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </label>
+        {loading && (
+          <span className="loading loading-spinner text-primary"></span>
+        )}
+        {data?.location && <WeatherCard weatherData={data} />}
         <div className="mb-4 w-full flex justify-end">
           <label className="flex items-center gap-2 cursor-pointer select-none">
             <input
@@ -123,6 +230,7 @@ export default function Home() {
             {t("enableDrag")}
           </label>
         </div>
+
         <DndContext
           collisionDetection={closestCorners}
           onDragEnd={handleDragEnd}
