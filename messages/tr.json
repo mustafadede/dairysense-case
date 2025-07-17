@@ -5,6 +5,7 @@
     "default": "Varsayılan",
     "search": "İnek Ara",
     "today": "Bugün",
-    "reports": "Raporlar"
+    "reports": "Raporlar",
+    "enableDrag": "Sıralamayı Etkinleştir"
   }
 }

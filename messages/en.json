@@ -5,6 +5,7 @@
     "default": "Default",
     "search": "Search Cow",
     "today": "Today",
-    "reports": "Reports"
+    "reports": "Reports",
+    "enableDrag": "Enable Drag"
   }
 }
