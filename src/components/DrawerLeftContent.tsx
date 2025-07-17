@@ -3,6 +3,7 @@
 import Image from "next/image";
 import names from "@/utils/leftSideBarNames.json";
 import { JSX } from "react/jsx-runtime";
+import { useLocale, useTranslations } from "next-intl";
 
 const icons: Record<string, JSX.Element> = {
   "Kontrol Paneli": (
@@ -146,6 +147,8 @@ const icons: Record<string, JSX.Element> = {
 };
 
 function DrawerLeftContent() {
+  const locale = useLocale();
+  const t = useTranslations("HomePage");
   return (
     <div className="verflow-y-auto">
       <Image
@@ -163,7 +166,9 @@ function DrawerLeftContent() {
               className="btn bg-white text-start w-full border-0 hover:bg-gray-300 rounded-2xl py-4 justify-start text-black"
             >
               <span className="mr-2">{icons[name] ?? <span />}</span>
-              <p className="text-sm md:text-base">{name}</p>
+              <p className="text-sm md:text-base">
+                {name === "Raporlar" ? t("reports") : name}
+              </p>
             </button>
           ))}
         </div>
