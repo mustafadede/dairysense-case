@@ -58,14 +58,8 @@ interface SortableBlockProps {
 }
 
 function SortableBlock({ id, children, showHandles }: SortableBlockProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
