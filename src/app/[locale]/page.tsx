@@ -13,7 +13,7 @@ import {
 } from "@dnd-kit/sortable";
 import { useEffect, useState } from "react";
 import { CSS } from "@dnd-kit/utilities";
-import { useWeatherLocation } from "@/hooks/useWeatherLocation";
+import { fetchWeatherLocation } from "@/hooks/useWeatherLocation";
 import { WeatherCard } from "@/components/WeatherCard";
 
 const cardDatas = [
@@ -177,7 +177,7 @@ export default function Home() {
     setLoading(true);
 
     const timeoutId = setTimeout(async () => {
-      const res = await useWeatherLocation(location);
+      const res = await fetchWeatherLocation(location);
       setData(res);
       setLoading(false);
     }, 500);
