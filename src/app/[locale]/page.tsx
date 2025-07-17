@@ -176,11 +176,10 @@ export default function Home() {
 
     setLoading(true);
 
-    const timeoutId = setTimeout(() => {
-      useWeatherLocation(location).then((res) => {
-        setData(res);
-        setLoading(false);
-      });
+    const timeoutId = setTimeout(async () => {
+      const res = await useWeatherLocation(location);
+      setData(res);
+      setLoading(false);
     }, 500);
 
     return () => clearTimeout(timeoutId);
