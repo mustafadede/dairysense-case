@@ -5,7 +5,12 @@ import BarChart from "@/components/BarChart";
 import { useTranslations } from "next-intl";
 import { closestCorners, DndContext, DragEndEvent } from "@dnd-kit/core";
 import { TouchSensor, MouseSensor, useSensor, useSensors } from "@dnd-kit/core";
-import { SortableContext, useSortable, arrayMove } from "@dnd-kit/sortable";
+import {
+  SortableContext,
+  useSortable,
+  arrayMove,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 import { useState } from "react";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -65,9 +70,17 @@ function SortableBlock({ id, children, showHandles }: SortableBlockProps) {
     transition,
   };
   return (
-    <div ref={setNodeRef} style={style} {...attributes} className="w-full">
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      className="w-full relative"
+    >
       {showHandles && (
-        <div {...listeners} className="mb-2">
+        <div
+          {...listeners}
+          className="mb-2 relative z-20 bg-gray-200 rounded-md w-7 h-7justify-center items-center flex border border-black"
+        >
           <DragHandle />
         </div>
       )}
@@ -99,7 +112,7 @@ export default function Home() {
     <div className="w-screen h-screen mb-5 md:mb-10">
       <Navbar />
       <div className="flex flex-col h-full p-6">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 w-full flex justify-end">
           <label className="flex items-center gap-2 cursor-pointer select-none">
             <input
               type="checkbox"
@@ -115,7 +128,10 @@ export default function Home() {
           onDragEnd={handleDragEnd}
           sensors={sensors}
         >
-          <SortableContext items={sortableItems}>
+          <SortableContext
+            items={sortableItems}
+            strategy={verticalListSortingStrategy}
+          >
             {sortableItems.map((key) => {
               if (key === "header") {
                 return (
